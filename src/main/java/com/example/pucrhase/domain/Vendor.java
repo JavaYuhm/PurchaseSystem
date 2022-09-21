@@ -10,6 +10,14 @@ public class Vendor extends Member{
     Long bidNo;
 
     String ceoName;
+
+    /*
+    산업군
+    */
     String industryType;
+
+    /*
+    사업군
+    */
     String businessType;
 }
