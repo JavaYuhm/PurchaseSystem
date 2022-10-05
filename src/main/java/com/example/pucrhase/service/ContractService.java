@@ -1,5 +1,4 @@
 package com.example.pucrhase.service;
 
-public interface VendorService {
-
+public interface ContractService {
 }

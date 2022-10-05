@@ -1,14 +1,10 @@
-package com.example.pucrhase.domain;
+package com.example.pucrhase.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.example.pucrhase.domain.MemberType;
+
 import java.time.LocalDateTime;
 
-@Entity
-public class Member {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class MemberDto {
     Long id;
 
     String loginId;
