@@ -1,11 +1,12 @@
 package com.example.pucrhase.dto;
 
 import com.example.pucrhase.domain.MemberType;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
+@Data
 public class MemberDto {
-    Long id;
 
     String loginId;
     String password;
