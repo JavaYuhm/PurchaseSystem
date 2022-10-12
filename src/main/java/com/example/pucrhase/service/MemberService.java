@@ -1,5 +1,6 @@
 package com.example.pucrhase.service;
 
+import com.example.pucrhase.domain.Member;
 import com.example.pucrhase.dto.MemberDto;
 
 public interface MemberService {
@@ -9,10 +10,16 @@ public interface MemberService {
      */
     public void join(MemberDto memberDto);
 
+    boolean sendMemberResetPassword(MemberDto memberDto);
+
+    boolean resetMemberPassword(String uuid, String password);
+
+    boolean checkResetPassword(String uuid);
+
     /**
      *  로그인
      */
-    public void login(MemberDto memberDto);
+    public String login(MemberDto memberDto);
 
     /**
      * 회원정보 변경

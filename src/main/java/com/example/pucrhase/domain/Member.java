@@ -1,6 +1,9 @@
 package com.example.pucrhase.domain;
 
 import lombok.Builder;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,10 +11,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
-public class Member {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class Member implements UserDetails {
+    @Id
     String loginId;
     String password;
     String name;
@@ -48,8 +54,45 @@ public class Member {
         return loginId;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
+        grantedAuthorityList.add(new SimpleGrantedAuthority("USER"));
+        if(this.memberType==MemberType.ADMIN){
+            grantedAuthorityList.add(new SimpleGrantedAuthority("ADMIN"));
+
+        }
+
+        return grantedAuthorityList;
+    }
+
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.loginId;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
     public String getName() {
