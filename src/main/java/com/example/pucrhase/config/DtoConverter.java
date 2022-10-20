@@ -1,7 +1,9 @@
 package com.example.pucrhase.config;
 
 import com.example.pucrhase.domain.Member;
+import com.example.pucrhase.domain.PuchasingRequest;
 import com.example.pucrhase.dto.MemberDto;
+import com.example.pucrhase.dto.PrDto;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -26,4 +28,5 @@ public class DtoConverter {
                 , memberDto.getStatus()
                 , LocalDateTime.now());
     }
+
 }

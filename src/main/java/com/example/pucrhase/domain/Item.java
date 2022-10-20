@@ -1,12 +1,11 @@
 package com.example.pucrhase.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 public class Item {
-    @Id
+    @Id @GeneratedValue
     Long itemId;
 
     String itemNo;
@@ -21,4 +20,5 @@ public class Item {
     String itemStatus;
     LocalDate addDate;
     LocalDate changeDate;
+
 }
