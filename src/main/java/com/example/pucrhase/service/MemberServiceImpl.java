@@ -7,6 +7,7 @@ import com.example.pucrhase.dto.MemberDto;
 import com.example.pucrhase.exception.MemberDuplicateExcption;
 import com.example.pucrhase.exception.MemberNotFoundException;
 import com.example.pucrhase.repository.MemberRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class MemberServiceImpl implements MemberService, UserDetailsService {
 
@@ -33,6 +35,7 @@ public class MemberServiceImpl implements MemberService, UserDetailsService {
         Optional<Member> findbyIdMember = memberRepository.findById(memberDto.getLoginId());
 
         if(findbyIdMember.isPresent()){
+            log.error("Join MemberDuplicateExcption : ", memberDto.getLoginId());
             throw new MemberDuplicateExcption("Login ID 중복");
         }
         memberRepository.save(dtoConverter.toCreateMember(memberDto));
@@ -57,6 +60,7 @@ public class MemberServiceImpl implements MemberService, UserDetailsService {
     public String login(MemberDto memberDto) {
         Optional<Member> optionalMember = memberRepository.findById(memberDto.getLoginId());
         if(optionalMember.isEmpty()){
+            log.error("login MemberNotFoundException : ", memberDto.getLoginId());
             throw new MemberNotFoundException("Login ID 를 찾을 수 없습니다.");
         }
         Member member = optionalMember.get();

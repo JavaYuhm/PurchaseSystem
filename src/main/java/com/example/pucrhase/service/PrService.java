@@ -3,7 +3,7 @@ package com.example.pucrhase.service;
 import com.example.pucrhase.dto.PrDto;
 import com.example.pucrhase.model.ServiceResult;
 
-public interface OrderService {
+public interface PrService {
 
     /**
      * PR 생성

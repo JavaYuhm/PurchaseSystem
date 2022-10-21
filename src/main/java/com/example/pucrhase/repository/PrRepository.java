@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface OrderRepository extends JpaRepository<PuchasingRequest, Long> {
+public interface PrRepository extends JpaRepository<PuchasingRequest, Long> {
     Optional<PuchasingRequest> findByPrNo(String prNo);
 }
