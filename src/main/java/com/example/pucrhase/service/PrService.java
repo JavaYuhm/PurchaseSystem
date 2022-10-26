@@ -24,4 +24,6 @@ public interface PrService {
      * PR 승인
      */
     ServiceResult signPr(PrDto pr);
+
+
 }
